@@ -59,12 +59,16 @@ public class ProgramTest {
         Assertions.assertEquals(expectedGreeting, actualGreeting);
     }
     @Test
-    @DisplayName("Given a time of 0, then the output should be ...")
-    void checkThat0Gives(){
+    @DisplayName("Given a time of 0, then the output should be Good night!")
+    void checkThat0GivesGoodNight(){
         int time = 0;
+        String expectedGreeting = "Good night!";
+        String actualGreeting = Program.getGreeting(time);
+        Assertions.assertEquals(expectedGreeting, actualGreeting);
 
     }
-    //Between 0 - 5 -- Good night!
+    //At least 3 tests to test all 3 outputs, then check the boundary cases and exceptions
+    //Between 0 - 5 -- ???
     //Between 5 - 12 -- Good morning!
     //Between 12 - 18 -- Good afternoon!
     //Between 18 - 24 -- Good evening!

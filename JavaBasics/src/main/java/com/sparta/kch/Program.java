@@ -5,6 +5,7 @@ package com.sparta.kch;
     All code should never all exist in the main
     Each method should only do one thing
         e.g. initialising, logic, printing
+    Do not make external behaviour changes before checking user stories and stakeholder wants
 */
 
 
@@ -21,8 +22,24 @@ public class Program {
     }
     //Cannot be seen outside of class, -- , doesn't return a value
     //Needs to be public to be tested
+
+
     public static String getGreeting(int timeOfDay) {
         String greeting;
+
+        if (timeOfDay > 24 || timeOfDay < 0){  //Checking time inside 0 to 24
+            greeting = "Invalid time";
+        } else if (timeOfDay < 5){
+            greeting = "Good night!";
+        } else if (timeOfDay < 12) {
+            greeting = "Good morning!";
+        } else if (timeOfDay < 18) {
+            greeting = "Good afternoon!";
+        } else {
+            greeting = "Good evening!";
+        }
+        return greeting;
+        /*
         if (timeOfDay >= 5 && timeOfDay <= 12) { //always a boolean
             greeting = "Good morning!";
         } else if (timeOfDay >= 12 && timeOfDay <= 18) {
@@ -30,6 +47,7 @@ public class Program {
         } else {
             greeting = "Good evening!";
         }
-        return greeting;
+        */
+
     }
 }
