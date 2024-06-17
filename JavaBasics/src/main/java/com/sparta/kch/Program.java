@@ -20,7 +20,8 @@ public class Program {
 
     }
     //Cannot be seen outside of class, -- , doesn't return a value
-    private static String getGreeting(int timeOfDay) {
+    //Needs to be public to be tested
+    public static String getGreeting(int timeOfDay) {
         String greeting;
         if (timeOfDay >= 5 && timeOfDay <= 12) { //always a boolean
             greeting = "Good morning!";
