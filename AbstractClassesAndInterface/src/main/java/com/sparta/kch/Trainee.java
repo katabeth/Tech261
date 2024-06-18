@@ -12,10 +12,12 @@ public abstract class Trainee {
     private int age;
     private String email;
     private String phone; //As sting to keep length and leading 0s
-    
-    public Trainee (String name, int age){
+    //Constructor
+    public Trainee (String name, int age, String email, String phone){
         this.name = name;
         this.age = age;
+        this.email = email;
+        this.phone = phone;
     }
 
     public String getPhone() {
