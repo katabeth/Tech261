@@ -7,23 +7,18 @@ package com.sparta.kch;
         e.g. initialising, logic, printing
     Do not make external behaviour changes before checking user stories and stakeholder wants
 */
-
-
 public class Program {
     public static void main(String[] args) { //entry point (methods)
         int timeOfDay = 12;
         //TYPE, NAME, VALUE
         //strongly typed language (TYPE must always be declared)
         //statically typed language (TYPE cannot be changed from the declaration)
-
-
         System.out.println(getGreeting(timeOfDay));
-
     }
-    //Cannot be seen outside of class, -- , doesn't return a value
+    //Private means cannot be seen outside of class
+    //Static means
+    //void means doesn't return a value
     //Needs to be public to be tested
-
-
     public static String getGreeting(int timeOfDay) {
         String greeting;
 
