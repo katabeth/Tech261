@@ -7,10 +7,12 @@ certifications
 projects
 github
  */
-public class JavaTrainee extends Trainee{
+public class JavaTrainee extends Trainee implements Trainable{
     public JavaTrainee(String name, int age, String email, String phone){
         super(name, age, email, phone);
     }
+
+
     private String experience;
     private String certifications;
     private String projects;

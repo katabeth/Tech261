@@ -6,7 +6,7 @@ experience
 certifications
 projects
  */
-public class DevOpsTrainee extends Trainee{
+public class DevOpsTrainee extends Trainee implements Trainable{
     public DevOpsTrainee(String name, int age, String email, String phone){
         super(name, age, email, phone);
     }
