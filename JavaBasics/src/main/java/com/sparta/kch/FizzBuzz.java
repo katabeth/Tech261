@@ -5,7 +5,9 @@ public class FizzBuzz {
         String fizzBuzzString = Integer.toString(number);
         if (number % 3 == 0){
             fizzBuzzString = "Fizz";
-        }
+        } /*else if (number % 5 == 0){
+            fizzBuzzString = "Buzz";
+        }*/
         return fizzBuzzString;
     }
 }
