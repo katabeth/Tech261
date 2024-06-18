@@ -31,7 +31,7 @@ public class CKArrayTest {
     }
     //Array starting with 0
     @Test
-    @DisplayName("Input array is 0,1,2,3, then print number 103")
+    @DisplayName("Input array is 0,1,2,3, then print number 123")
     void inputOf0123Returns123(){
         int[] input = {0,1,2,3};
         int expected = 123;
