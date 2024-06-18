@@ -15,7 +15,7 @@ public class FizzBuzzTests {
 
     //Most simple test - Does 1 give 1?
     @Test
-    @DisplayName("When the input number is 1, then print number 1")
+    @DisplayName("Input number is 1, then print number 1")
     void givenInputOf1AppReturns1() {
         //Arrange
         int input = 1;
@@ -25,7 +25,7 @@ public class FizzBuzzTests {
         //Assert
         Assertions.assertEquals(expected, actual);
     }
-
+    //Numbers after 1
     @ParameterizedTest
     @CsvSource({            //Copying the format of a CSV so can input a whole file
             "2 , 2",        //Will convert the input string to an int if possible
@@ -33,6 +33,7 @@ public class FizzBuzzTests {
             "7 , 7",
             "8 , 8"
     })
+    @DisplayName("Input number is not divisible by 5 or 3, then print number as output")
     void givenInputNotDivBy3Or5AppReturnsNumber(int input, String expected) {
         //Arrange -- sorted
         //Act
@@ -44,12 +45,20 @@ public class FizzBuzzTests {
     //Fizz time
     @ParameterizedTest
     @ValueSource(ints = {3, 6, 9, 12})
-    @DisplayName("When the input is divisible by 3, then print word Fizz")
+    @DisplayName("Input is divisible by 3, then print word Fizz")
     void givenInputDivisibleBy3AppReturnsFizz(int input) {
         String expected = "Fizz";
         String actual = FizzBuzz.getFizzBuzzFrom(input);
         Assertions.assertEquals(expected, actual);
     }
 
-
+    //Buzz time
+    @ParameterizedTest
+    @ValueSource(ints = {5, 10, 20, 25})
+    @DisplayName("Input is divisible by 5, then print word Buzz")
+    void givenInputDivisibleBy5AppReturnsBuzz(int input) {
+        String expected = "Buzz";
+        String actual = FizzBuzz.getFizzBuzzFrom(input);
+        Assertions.assertEquals(expected, actual);
+    }
 }
