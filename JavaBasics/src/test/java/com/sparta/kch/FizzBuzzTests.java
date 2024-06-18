@@ -70,4 +70,31 @@ public class FizzBuzzTests {
         String actual = FizzBuzz.getFizzBuzzFrom(input);
         Assertions.assertEquals(expected, actual);
     }
+    //Full test time
+    @ParameterizedTest
+    @CsvSource({            //Copying the format of a CSV so can input a whole file
+            "1 , 1",
+            "2 , 2",        //Will convert the input string to an int if possible
+            "3 , Fizz",
+            "4 , 4",
+            "5 , Buzz",
+            "6 , Fizz",
+            "7 , 7",
+            "8 , 8",
+            "9 , Fizz",
+            "10, Buzz",
+            "11, 11",
+            "12, Fizz",
+            "13, 13",
+            "14, 14",
+            "15  FizzBuzz"
+    })
+    @DisplayName("Inputs 1 to 15, then print output")
+    void FullTestTime(int input, String expected) {
+        //Arrange -- sorted
+        //Act
+        String actual = FizzBuzz.getFizzBuzzFrom(input);
+        //Assert
+        Assertions.assertEquals(expected, actual);
+    }
 }
