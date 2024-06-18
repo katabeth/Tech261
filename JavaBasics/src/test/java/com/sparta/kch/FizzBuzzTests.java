@@ -61,4 +61,13 @@ public class FizzBuzzTests {
         String actual = FizzBuzz.getFizzBuzzFrom(input);
         Assertions.assertEquals(expected, actual);
     }
+    //FizzBuzz Baby
+    @ParameterizedTest
+    @ValueSource(ints = {15, 30, 45, 60})
+    @DisplayName("Input is divisible by 3 and 5, then print word FizzBuzz")
+    void givenInputDivisibleBy3And5AppReturnsFizzBuzz(int input) {
+        String expected = "FizzBuzz";
+        String actual = FizzBuzz.getFizzBuzzFrom(input);
+        Assertions.assertEquals(expected, actual);
+    }
 }
