@@ -5,7 +5,7 @@ public class Cat extends Animal{
         super(name,breed,age);
     }
     //Overwriting
-    @Override
+    @Override //stops from unnecessary or unwanted overloading
     public void play(){
         System.out.println(super.getName() + " does not want to play");
     }
