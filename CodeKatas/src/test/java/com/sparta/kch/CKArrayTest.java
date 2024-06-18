@@ -25,11 +25,13 @@ public class CKArrayTest {
     }
     //Array starting with 0
     @Test
-    @DisplayName("Input array is 0,1,2,3, then print number 123")
+    @DisplayName("Input array is 0,1,2,3, then print number 103")
     void inputOf0123Returns123(){
         int[] input = {0,1,2,3};
         String expected = "123";
         String actual = CKArrayMain.getCalcVal(input);
         Assertions.assertEquals(expected, actual);
     }
+    //@Test
+    //@DisplayName()
 }
