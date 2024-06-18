@@ -32,6 +32,13 @@ public class CKArrayTest {
         String actual = CKArrayMain.getCalcVal(input);
         Assertions.assertEquals(expected, actual);
     }
-    //@Test
-    //@DisplayName()
+    //Checking if only first 0 is removed
+    @Test
+    @DisplayName("Input array is 1,0,3,4 then print number 1034")
+    void inputOf1034Returns1034(){
+        int[] input = {1,0,3,4};
+        String expected = "1034";
+        String actual = CKArrayMain.getCalcVal(input);
+        Assertions.assertEquals(expected, actual);
+    }
 }
