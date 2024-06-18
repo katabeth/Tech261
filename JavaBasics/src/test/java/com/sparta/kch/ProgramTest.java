@@ -23,15 +23,6 @@ public class ProgramTest {
         //Assertions.assertEquals("Good evening!", Program.getGreeting(21));
         // The variables don't need to be made for the code to function
     }
-    //Edge case of 12 -- Good afternoon!
-    @Test
-    @DisplayName("Given a time of 12, then the greeting should be Good afternoon!")
-    void checkThat12GivesGoodAfternoon(){
-        int time = 12;
-        String expectedGreeting = "Good afternoon!";
-        String actualGreeting = Program.getGreeting(time);
-        Assertions.assertEquals(expectedGreeting, actualGreeting);
-    }
     //Time as a negative -- invalid time
     @Test
     @DisplayName("Given a time of -1, then the output should be Invalid Time")
@@ -50,6 +41,16 @@ public class ProgramTest {
         String actualGreeting = Program.getGreeting(time);
         Assertions.assertEquals(expectedGreeting, actualGreeting);
     }
+    //Between 12 - 18 -- Good afternoon!
+    @Test
+    @DisplayName("Given a time of 12, then the greeting should be Good afternoon!")
+    void checkThat12GivesGoodAfternoon(){
+        int time = 12;
+        String expectedGreeting = "Good afternoon!";
+        String actualGreeting = Program.getGreeting(time);
+        Assertions.assertEquals(expectedGreeting, actualGreeting);
+    }
+    //Between 18 - 24 -- Good evening!
     @Test
     @DisplayName("Given a time of 18, then the output should be Good evening!")
     void checkThat18GivesGoodEvening(){
@@ -58,6 +59,7 @@ public class ProgramTest {
         String actualGreeting = Program.getGreeting(time);
         Assertions.assertEquals(expectedGreeting, actualGreeting);
     }
+    //Between 0 - 5 -- Good night!
     @Test
     @DisplayName("Given a time of 0, then the output should be Good night!")
     void checkThat0GivesGoodNight(){
@@ -67,12 +69,22 @@ public class ProgramTest {
         Assertions.assertEquals(expectedGreeting, actualGreeting);
 
     }
+    //Between 5 - 12 -- Good morning!
+    @Test
+    @DisplayName("Given a time of 5, then the output should be Good morning!")
+    void checkThat5GivesGoodMorning(){
+        int time = 5;
+        String expectedGreeting = "Good morning!";
+        String actualGreeting = Program.getGreeting(time);
+        Assertions.assertEquals(expectedGreeting, actualGreeting);
+    }
+
     //At least 3 tests to test all 3 outputs, then check the boundary cases and exceptions
-    //Between 0 - 5 -- ???
+    //Between 0 - 5 -- Good night!
     //Between 5 - 12 -- Good morning!
     //Between 12 - 18 -- Good afternoon!
     //Between 18 - 24 -- Good evening!
-    //All cases within 0-24 -- always give an output
+    //All cases within 0-24 -- always give an output,
     //Output is always a value
     //Time in words?
     //Check if time is an int -- not usually needed
