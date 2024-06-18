@@ -48,5 +48,12 @@ public class CKArrayTest {
         Assertions.assertEquals(expected, actual);
     }
     //Checking if empty array returns 0
-
+    @Test
+    @DisplayName("Input array is empty then print number 1024")
+    void inputOfBlankReturns0(){
+        int[] input = {};
+        int expected = 0;
+        int actual = CKArrayMain.getCalcVal(input);
+        Assertions.assertEquals(expected, actual);
+    }
 }

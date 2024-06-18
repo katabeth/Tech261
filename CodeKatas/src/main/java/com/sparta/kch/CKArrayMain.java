@@ -7,10 +7,13 @@ public class CKArrayMain {
 
     public static int getCalcVal(int[] numbers){
         StringBuilder concatArray = new StringBuilder();
-        for (int element : numbers) {
-            concatArray.append(element);
+        if (numbers.length == 0){
+            concatArray.append("0");
+        } else {
+            for (int element : numbers) {
+                concatArray.append(element);
+            }
         }
-
         return Integer.parseInt(concatArray.toString());
     }
 }
