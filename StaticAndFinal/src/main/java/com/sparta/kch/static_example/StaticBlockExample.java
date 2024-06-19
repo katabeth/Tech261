@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class StaticBlockExample {
     private static ArrayList<String> names = new ArrayList<>();
 
-    static{ //A  block whihc is run once when the class is loaded in JVm memory
-        names.add("Kat");
+    static{ //A  block which is run once when the class is loaded in JVm memory
+        names.add("Kat");   //Can only call static fields
         names.add("Alex");
     }
 

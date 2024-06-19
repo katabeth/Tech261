@@ -5,11 +5,12 @@ public class App {
         Spartan kat = new Spartan();
         Spartan alex = new Spartan();
 
-        kat.setName("Kat");
+        kat.setName("Kat"); //Instance method - called from objects
         alex.setName("Alex");
 
         System.out.println(kat.getName());
         System.out.println(alex.getName());
-        Spartan.printSpartan(kat);
+
+        Spartan.printSpartan(kat); //Static method - called from a class
     }
 }
