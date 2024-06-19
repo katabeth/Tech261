@@ -9,13 +9,19 @@ public class JavaTrainee extends Trainee implements Trainable{
     }
     private String github;
 
+    public String getGithub() {
+        return github;
+    }
+
+    public void setGithub(String github) {
+        this.github = github;
+    }
+
     @Override
     public void train() {
-
     }
 
     @Override
     public void study() {
-
     }
 }
