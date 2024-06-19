@@ -9,5 +9,5 @@ Make the JavaTrainee and DevOpsTrainee classes implement the Trainable interface
 public interface Trainable {
     void train();
     void study();
-    
+
 }
