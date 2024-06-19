@@ -1,6 +1,6 @@
 package com.sparta.kch;
 
-public class Dog extends Animal{
+public class Dog extends Animal implements Drinkable{
 
     public Dog(String name, String breed, int age){
         super(name,breed,age);
@@ -20,4 +20,13 @@ public class Dog extends Animal{
     }
 
 
+    @Override
+    public void drink() {
+
+    }
+
+    @Override
+    public String goToSleep() {
+        return "";
+    }
 }

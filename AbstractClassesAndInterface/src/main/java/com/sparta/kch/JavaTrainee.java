@@ -17,4 +17,14 @@ public class JavaTrainee extends Trainee implements Trainable{
     private String certifications;
     private String projects;
     private String github;
+
+    @Override
+    public void train() {
+
+    }
+
+    @Override
+    public void study() {
+
+    }
 }

@@ -37,7 +37,7 @@ public abstract class Animal {
     }
 
     public void play(){
-        System.out.println(name + "wants to play");
+        System.out.println(name + " wants to play");
     }
     /*
     public void eat() {

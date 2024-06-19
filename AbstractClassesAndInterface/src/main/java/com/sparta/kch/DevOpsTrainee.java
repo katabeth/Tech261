@@ -13,4 +13,14 @@ public class DevOpsTrainee extends Trainee implements Trainable{
     private String experience;
     private String certifications;
     private String projects;
+
+    @Override
+    public void train() {
+
+    }
+
+    @Override
+    public void study() {
+
+    }
 }
