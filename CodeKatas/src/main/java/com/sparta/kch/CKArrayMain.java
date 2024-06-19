@@ -11,7 +11,7 @@ public class CKArrayMain {
             concatArray.append("0");
         } else {
             for (int element : numbers) {
-                concatArray.append(element);
+                concatArray.append(Math.abs(element));
             }
         }
         return Integer.parseInt(concatArray.toString());
