@@ -19,10 +19,9 @@ public class Dog extends Animal implements Drinkable{
         System.out.println(name + " wants to play with" + super.getName());
     }
 
-
     @Override
     public void drink() {
-
+        Drinkable.doSomething();
     }
 
     @Override
