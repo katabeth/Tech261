@@ -7,7 +7,9 @@ public class App {
         Spartan spartan2 = new Spartan("Kat","Carver-Hardy");
 
         System.out.println(spartan1 == spartan2);
-        System.out.println(spartan1.equals(spartan2));
         //Why is this false?
+        System.out.println(spartan1.equals(spartan2));
+        System.out.println(spartan1.hashCode());
+        System.out.println(spartan2.hashCode());
     }
 }
