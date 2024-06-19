@@ -49,10 +49,19 @@ public class CKArrayTest {
     }
     //Checking if empty array returns 0
     @Test
-    @DisplayName("Input array is empty then print number 1024")
+    @DisplayName("Input array is empty then print number 0")
     void inputOfBlankReturns0(){
         int[] input = {};
         int expected = 0;
+        int actual = CKArrayMain.getCalcVal(input);
+        Assertions.assertEquals(expected, actual);
+    }
+    //If an entry is negative
+    @Test
+    @DisplayName("Input array contains negative numbers then print number them as positive")
+    void inputOf12neg34Returns1234(){
+        int[] input = {1,2,-3,4};
+        int expected = 1234;
         int actual = CKArrayMain.getCalcVal(input);
         Assertions.assertEquals(expected, actual);
     }
