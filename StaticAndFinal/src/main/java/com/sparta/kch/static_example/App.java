@@ -10,5 +10,6 @@ public class App {
 
         System.out.println(kat.getName());
         System.out.println(alex.getName());
+        Spartan.printSpartan(kat);
     }
 }
