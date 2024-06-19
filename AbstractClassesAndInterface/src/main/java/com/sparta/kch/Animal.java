@@ -39,6 +39,11 @@ public abstract class Animal {
     public void play(){
         System.out.println(name + "wants to play");
     }
-
+    /*
+    public void eat() {
+        System.out.println("animal is eating"); //everyone will override this
+    }
+    */
+    public abstract void eat(); //Forced to be implemented in subclasses
 
 }
