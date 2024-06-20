@@ -18,5 +18,37 @@ public class CKPalindromeTest {
         //Assert
         Assertions.assertEquals(expected, actual);
     }
-
+    @Test
+    @DisplayName("Input string /'Race car' Returns false")
+    void inputOfRace_carReturnsTrue() {
+        //Arrange
+        String input = "Race car";
+        boolean expected = false;
+        //Act
+        boolean actual = CKPalindromeMain.isPalindrome(input);
+        //Assert
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    @DisplayName("Input string shorter than 3 Returns false")
+    void inputOfaaReturnsTrue() {
+        //Arrange
+        String input = "aa";
+        boolean expected = false;
+        //Act
+        boolean actual = CKPalindromeMain.isPalindrome(input);
+        //Assert
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    @DisplayName("Input string Null Returns false")
+    void inputOfNullReturnsTrue() {
+        //Arrange
+        String input = null;
+        boolean expected = false;
+        //Act
+        boolean actual = CKPalindromeMain.isPalindrome(input);
+        //Assert
+        Assertions.assertEquals(expected, actual);
+    }
 }

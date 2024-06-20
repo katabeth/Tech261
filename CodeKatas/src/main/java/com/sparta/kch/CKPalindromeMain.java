@@ -13,6 +13,9 @@ public class CKPalindromeMain {
         //Checks if same forward as is backwards
         //Could break down in to char and compare
         //Case insensitive
+        if (wordToCheck == null || wordToCheck.length() <3){
+            return false;
+        }
         StringBuilder wordBackwards = new StringBuilder();
         char[] charWordToCheck = wordToCheck.toLowerCase().toCharArray();
         for (int element = wordToCheck.length()-1; element >= 0; element--){
