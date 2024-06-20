@@ -16,11 +16,15 @@ public class CKPalindromeMain {
         if (wordToCheck == null || wordToCheck.length() <3){
             return false;
         }
-        StringBuilder wordBackwards = new StringBuilder();
-        char[] charWordToCheck = wordToCheck.toLowerCase().toCharArray();
-        for (int element = wordToCheck.length()-1; element >= 0; element--){
-            wordBackwards.append(charWordToCheck[element]);
-        }
+        //StringBuilder
+
+        StringBuilder wordBackwards = new StringBuilder(wordToCheck.toLowerCase());
+        wordBackwards.reverse();
+
+//        char[] charWordToCheck = wordToCheck.toLowerCase().toCharArray();
+//        for (int element = wordToCheck.length()-1; element >= 0; element--){
+//            wordBackwards.append(charWordToCheck[element]);
+//        }
 
         return wordBackwards.toString().equals(wordToCheck.toLowerCase());
     }
