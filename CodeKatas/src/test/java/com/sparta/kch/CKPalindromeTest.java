@@ -68,4 +68,13 @@ public class CKPalindromeTest {
         String actual = CKPalindromeMain.getAnyPalindromes(input);
         Assertions.assertEquals(expected, actual);
     }
+    //2 same length palindromes
+    @Test
+    @DisplayName("Input sentence of /'The racecar was deified' to return /'racecar and deified'")
+    void inputOf2SameLenPalInReturnBothWords(){
+        String input = "The racecar was deified";
+        String expected = "racecar and deified";
+        String actual = CKPalindromeMain.getAnyPalindromes(input);
+        Assertions.assertEquals(expected, actual);
+    }
 }
