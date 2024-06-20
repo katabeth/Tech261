@@ -12,7 +12,9 @@ public class StringExample {
         System.out.println("Hello " + name); //Creates 3 strings
 
         //String Builder
-        
+        //Creates and deletes string as needed to make the string look mutable
+        //String Buffer
+        //The same as String Builder but is "Thread Safe" - multiple threads can work on the same string
 
     }
 }
