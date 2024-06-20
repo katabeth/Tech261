@@ -17,6 +17,9 @@ public class App {
         System.out.println(string4 == string3);     //False
         System.out.println(string1.equals(string3));//True
 
-
+        System.out.println(System.identityHashCode(string1));
+        System.out.println(System.identityHashCode(string2));
+        System.out.println(System.identityHashCode(string3));
+        System.out.println(System.identityHashCode(string4));
     }
 }
