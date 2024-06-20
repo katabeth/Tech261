@@ -38,16 +38,18 @@ public class CKPalindromeMain {
         //
         String[] wordsInSentence = sentenceToCheck.split(" ");
         int wordLength = 0;
-        String longestPalindrome = "None";
+        StringBuilder longestPalindromes = new StringBuilder("None");
         for (String word : wordsInSentence) {
-            if (isWordPalindrome(word)){
+            if (isWordPalindrome(word)) {
                 if (word.length() > wordLength){
                     wordLength = word.length();
-                    longestPalindrome = word;
+                    longestPalindromes.delete(0,longestPalindromes.length()).append(word);
+                } else if (word.length() == wordLength) {
+                    longestPalindromes.append(" and ").append(word);
                 }
             }
         }
-        return longestPalindrome;
+        return longestPalindromes.toString();
             
     }
 
