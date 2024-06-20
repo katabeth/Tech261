@@ -40,4 +40,21 @@ public class CKPalindromeTest {
         boolean actual = CKPalindromeMain.isWordPalindrome(input);
         Assertions.assertEquals(expected, actual);
     }
+    //Sentence tests
+    @Test
+    @DisplayName("Input sentence of /'The cat jumped over the hedge' to return /'None'")
+    void inputOfNoPalInReturnFalse(){
+        String input = "The cat jumped over the hedge";
+        String expected = "None";
+        String actual = CKPalindromeMain.getAnyPalindromes(input);
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    @DisplayName("Input sentence of /'The dad jumped over the hedge' to return /'Dad'")
+    void inputOf1PalInReturnWord(){
+        String input = "The dad jumped over the hedge";
+        String expected = "dad";
+        String actual = CKPalindromeMain.getAnyPalindromes(input);
+        Assertions.assertEquals(expected, actual);
+    }
 }

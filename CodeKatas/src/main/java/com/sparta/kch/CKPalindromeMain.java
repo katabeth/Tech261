@@ -24,7 +24,23 @@ public class CKPalindromeMain {
         wordBackwards.reverse();
         return wordBackwards.toString().equals(wordToCheck.toLowerCase());
     }
-    public static String getAnyPalindromes(String sentenceToCheck){
+//    Create a program that finds the longest unique Palindrome in a sentence
+//    A sentence is defined as a single string of words separated by whitespace
+//    If there are 2 or more largest palindromes, both should be returned
+//    The program should ignore all non-alphabet characters
 
+    public static String getAnyPalindromes(String sentenceToCheck){
+        //Break sentence down into words
+        //Check if word is palindrome
+        //Return the word if yes
+        //Return None if no
+        //If there are 2 or more largest palindromes, both should be returned - returned as one String
+        String[] wordsInSentence = sentenceToCheck.split(" ");
+        for (String word : wordsInSentence) {
+            if (isWordPalindrome(word)){
+                return word;
+            }
+        }
+        return "None";
     }
 }
