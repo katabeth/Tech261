@@ -18,5 +18,5 @@ public class CKPalindromeTest {
         //Assert
         Assertions.assertEquals(expected, actual);
     }
-    
+
 }

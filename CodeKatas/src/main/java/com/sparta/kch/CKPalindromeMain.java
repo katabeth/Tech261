@@ -15,11 +15,11 @@ public class CKPalindromeMain {
         //Case insensitive
         StringBuilder wordBackwards = new StringBuilder();
         char[] charWordToCheck = wordToCheck.toLowerCase().toCharArray();
-        for (int element = wordToCheck.length()-1; element > 0; element--){
+        for (int element = wordToCheck.length()-1; element >= 0; element--){
             wordBackwards.append(charWordToCheck[element]);
         }
 
-        return wordBackwards.toString().equals(wordToCheck);
+        return wordBackwards.toString().equals(wordToCheck.toLowerCase());
     }
 
 }
