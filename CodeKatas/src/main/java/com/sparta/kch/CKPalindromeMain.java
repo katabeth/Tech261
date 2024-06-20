@@ -8,6 +8,8 @@ package com.sparta.kch;
 //
 //For example: "Dad" is a palindrome, but "race car" is not.
 
+import java.util.Arrays;
+
 public class CKPalindromeMain {
     public static boolean isWordPalindrome(String wordToCheck){
         //Checks if same forward as is backwards
@@ -25,6 +27,6 @@ public class CKPalindromeMain {
         return wordBackwards.toString().equals(wordToCheck.toLowerCase());
     }
     public static String getAnyPalindromes(String sentenceToCheck){
-
+        
     }
 }
