@@ -77,4 +77,13 @@ public class CKPalindromeTest {
         String actual = CKPalindromeMain.getAnyPalindromes(input);
         Assertions.assertEquals(expected, actual);
     }
+    //Non-alphabetic characters present inside a palindrome
+    @Test
+    @DisplayName("Input sentence of /'The ra1cecar was deified' to return /'racecar and deified'")
+    void inputWithNonAlBeCharReturnRacecarAndDeified(){
+        String input = "The ra1cecar was deified";
+        String expected = "racecar and deified";
+        String actual = CKPalindromeMain.getAnyPalindromes(input);
+        Assertions.assertEquals(expected, actual);
+    }
 }
