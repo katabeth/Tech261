@@ -38,20 +38,19 @@ public class CKPalindromeMain {
         //Ignore all non-alphabet characters
         sentenceToCheck = sentenceToCheck.replaceAll("[^a-zA-Z ]", "").toLowerCase();
         String[] wordsInSentence = sentenceToCheck.split(" ");
-        int wordLength = 0;
+        int palindromeLength = 0;
         StringBuilder longestPalindromes = new StringBuilder("None");
         for (String word : wordsInSentence) {
             if (isWordPalindrome(word)) {
-                if (word.length() > wordLength){
-                    wordLength = word.length();
+                if (word.length() > palindromeLength){
+                    palindromeLength = word.length();
                     longestPalindromes.delete(0,longestPalindromes.length()).append(word);
-                } else if (word.length() == wordLength && longestPalindromes.indexOf(word) == -1) {
+                } else if (word.length() == palindromeLength && longestPalindromes.indexOf(word) == -1) {
                     longestPalindromes.append(" and ").append(word);
                 }
             }
         }
         return longestPalindromes.toString();
-            
     }
 
 
