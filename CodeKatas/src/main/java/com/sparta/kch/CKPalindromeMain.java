@@ -45,7 +45,7 @@ public class CKPalindromeMain {
                 if (word.length() > wordLength){
                     wordLength = word.length();
                     longestPalindromes.delete(0,longestPalindromes.length()).append(word);
-                } else if (word.length() == wordLength) {
+                } else if (word.length() == wordLength && longestPalindromes.indexOf(word) == -1) {
                     longestPalindromes.append(" and ").append(word);
                 }
             }

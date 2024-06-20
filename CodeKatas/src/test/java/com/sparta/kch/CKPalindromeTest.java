@@ -86,4 +86,13 @@ public class CKPalindromeTest {
         String actual = CKPalindromeMain.getAnyPalindromes(input);
         Assertions.assertEquals(expected, actual);
     }
+    //2 identical palindromes
+    @Test
+    @DisplayName("Input sentence of /'The racecar jumped over the racecar' to return /'racecar'")
+    void inputWithDuplPalReturnRacecar(){
+        String input = "The racecar jumped over the racecar";
+        String expected = "racecar";
+        String actual = CKPalindromeMain.getAnyPalindromes(input);
+        Assertions.assertEquals(expected, actual);
+    }
 }
