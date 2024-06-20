@@ -32,15 +32,24 @@ public class CKPalindromeMain {
     public static String getAnyPalindromes(String sentenceToCheck){
         //Break sentence down into words
         //Check if word is palindrome
-        //Return the word if yes
+        //Return the word as a string if yes
         //Return None if no
-        //If there are 2 or more largest palindromes, both should be returned - returned as one String
+        //Track the word length ... if the word is a palindrome and is longest then save and output
+        //
         String[] wordsInSentence = sentenceToCheck.split(" ");
+        int wordLength = 0;
+        String longestPalindrome = "None";
         for (String word : wordsInSentence) {
             if (isWordPalindrome(word)){
-                return word;
+                if (word.length() > wordLength){
+                    wordLength = word.length();
+                    longestPalindrome = word;
+                }
             }
         }
-        return "None";
+        return longestPalindrome;
+            
     }
+
+
 }

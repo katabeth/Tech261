@@ -41,6 +41,7 @@ public class CKPalindromeTest {
         Assertions.assertEquals(expected, actual);
     }
     //Sentence tests
+    //No Palindromes
     @Test
     @DisplayName("Input sentence of /'The cat jumped over the hedge' to return /'None'")
     void inputOfNoPalInReturnFalse(){
@@ -49,11 +50,21 @@ public class CKPalindromeTest {
         String actual = CKPalindromeMain.getAnyPalindromes(input);
         Assertions.assertEquals(expected, actual);
     }
+    //1 palindrome
     @Test
-    @DisplayName("Input sentence of /'The dad jumped over the hedge' to return /'Dad'")
+    @DisplayName("Input sentence of /'The dad jumped over the hedge' to return /'dad'")
     void inputOf1PalInReturnWord(){
         String input = "The dad jumped over the hedge";
         String expected = "dad";
+        String actual = CKPalindromeMain.getAnyPalindromes(input);
+        Assertions.assertEquals(expected, actual);
+    }
+    //2 palindromes
+    @Test
+    @DisplayName("Input sentence of /'The dad jumped over the racecar' to return /'racecar'")
+    void inputOf2PalInReturnWord(){
+        String input = "The dad jumped over the racecar";
+        String expected = "racecar";
         String actual = CKPalindromeMain.getAnyPalindromes(input);
         Assertions.assertEquals(expected, actual);
     }
