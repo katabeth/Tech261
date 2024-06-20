@@ -9,24 +9,22 @@ package com.sparta.kch;
 //For example: "Dad" is a palindrome, but "race car" is not.
 
 public class CKPalindromeMain {
-    public static boolean isPalindrome(String wordToCheck){
+    public static boolean isWordPalindrome(String wordToCheck){
         //Checks if same forward as is backwards
         //Could break down in to char and compare
         //Case insensitive
+        //char[] charWordToCheck = wordToCheck.toLowerCase().toCharArray();
+        //for (int element = wordToCheck.length()-1; element >= 0; element--){
+        //  wordBackwards.append(charWordToCheck[element]);
+        //}
         if (wordToCheck == null || wordToCheck.length() <3){
             return false;
         }
-        //StringBuilder
-
         StringBuilder wordBackwards = new StringBuilder(wordToCheck.toLowerCase());
         wordBackwards.reverse();
-
-//        char[] charWordToCheck = wordToCheck.toLowerCase().toCharArray();
-//        for (int element = wordToCheck.length()-1; element >= 0; element--){
-//            wordBackwards.append(charWordToCheck[element]);
-//        }
-
         return wordBackwards.toString().equals(wordToCheck.toLowerCase());
     }
+    public static String getAnyPalindromes(String sentenceToCheck){
 
+    }
 }
