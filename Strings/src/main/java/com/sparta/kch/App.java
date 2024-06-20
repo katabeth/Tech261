@@ -11,12 +11,12 @@ public class App {
         System.out.println(string2.hashCode());
         System.out.println(string3.hashCode());
         System.out.println(string4.hashCode());
-        System.out.println("");
+        System.out.println();
         System.out.println(string1 == string2);     //True
         System.out.println(string1 == string3);     //False
         System.out.println(string4 == string3);     //False
         System.out.println(string1.equals(string3));//True
-
+        System.out.println();
         System.out.println(System.identityHashCode(string1));
         System.out.println(System.identityHashCode(string2));
         System.out.println(System.identityHashCode(string3));
