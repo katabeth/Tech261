@@ -14,8 +14,9 @@ public class App {
         System.out.println("");
         System.out.println(string1 == string2);     //True
         System.out.println(string1 == string3);     //False
+        System.out.println(string4 == string3);     //False
         System.out.println(string1.equals(string3));//True
-        
+
 
     }
 }
