@@ -36,8 +36,8 @@ public class CKPalindromeMain {
         // Return None if no
         // Track the word length ... if the word is a palindrome and is longest then save and output
         // Ignore all non-alphabet characters
-        sentenceToCheck = sentenceToCheck.replaceAll("[^a-zA-Z ]", "").toLowerCase();
-        String[] wordsInSentence = sentenceToCheck.split(" ");
+
+        String[] wordsInSentence = formatSentence(sentenceToCheck);
         int palindromeLength = 0;
         StringBuilder longestPalindromes = new StringBuilder("None");
         for (String word : wordsInSentence) {
@@ -51,6 +51,10 @@ public class CKPalindromeMain {
             }
         }
         return longestPalindromes.toString();
+    }
+    private static String [] formatSentence(String sentenceToFormat){
+        sentenceToFormat = sentenceToFormat.replaceAll("[^a-zA-Z ]", "").toLowerCase();
+        return  sentenceToFormat.split(" ");
     }
 
 
