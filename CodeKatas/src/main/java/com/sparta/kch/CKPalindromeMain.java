@@ -26,10 +26,6 @@ public class CKPalindromeMain {
         wordBackwards.reverse();
         return wordBackwards.toString().equals(wordToCheck.toLowerCase());
     }
-<<<<<<< HEAD
-    public static String getAnyPalindromes(String sentenceToCheck){
-        
-=======
     // Create a program that finds the longest unique Palindrome in a sentence.
     // A sentence is defined as a single string of words separated by whitespace
     // If there are 2 or more largest palindromes, both should be returned
@@ -57,7 +53,7 @@ public class CKPalindromeMain {
             }
         }
         return longestPalindromes.toString();
->>>>>>> codeKata/Palindrome
+
     }
     private static String [] formatSentence(String sentenceToFormat){
         sentenceToFormat = sentenceToFormat.replaceAll("[^a-zA-Z ]", "").toLowerCase();
