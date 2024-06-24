@@ -26,7 +26,7 @@ public class CKPalindromeTest {
     }
     @Test
     @DisplayName("Input string shorter than 3 Returns false")
-    void testaaReturnsTrue() {
+    void testaaReturnsFalse() {
         String input = "aa";
         boolean expected = false;
         boolean actual = CKPalindromeMain.isWordPalindrome(input);

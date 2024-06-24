@@ -12,13 +12,7 @@ import java.util.Arrays;
 
 public class CKPalindromeMain {
     public static boolean isWordPalindrome(String wordToCheck){
-        // Checks if same forward as is backwards
-        // Could break down in to char and compare
-        // Case insensitive
-        // char[] charWordToCheck = wordToCheck.toLowerCase().toCharArray();
-        // for (int element = wordToCheck.length()-1; element >= 0; element--){
-        //      wordBackwards.append(charWordToCheck[element]);
-        // }
+
         if (wordToCheck == null || wordToCheck.length() <3){
             return false;
         }
@@ -26,18 +20,8 @@ public class CKPalindromeMain {
         wordBackwards.reverse();
         return wordBackwards.toString().equals(wordToCheck.toLowerCase());
     }
-    // Create a program that finds the longest unique Palindrome in a sentence.
-    // A sentence is defined as a single string of words separated by whitespace
-    // If there are 2 or more largest palindromes, both should be returned
-    // The program should ignore all non-alphabet characters
 
     public static String getLongestPalindromes(String sentenceToCheck){
-        // Break sentence down into words
-        // Check if word is palindrome
-        // Return the word as a string if yes
-        // Return None if no
-        // Track the word length ... if the word is a palindrome and is longest then save and output
-        // Ignore all non-alphabet characters
 
         String[] wordsInSentence = formatSentence(sentenceToCheck);
         int palindromeLength = 0;
@@ -56,7 +40,10 @@ public class CKPalindromeMain {
 
     }
     private static String [] formatSentence(String sentenceToFormat){
-        sentenceToFormat = sentenceToFormat.replaceAll("[^a-zA-Z ]", "").toLowerCase();
+        sentenceToFormat = sentenceToFormat
+                            .replaceAll("[^a-zA-Z ]", "")
+                            .toLowerCase();
+
         return  sentenceToFormat.split(" ");
     }
 
