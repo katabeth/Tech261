@@ -13,6 +13,6 @@ public class Chicken extends Sides{
 
     @Override
     public double getCost() {
-        return super.getCost() + 15;
+        return pizza.getCost() + 15;
     }
 }
