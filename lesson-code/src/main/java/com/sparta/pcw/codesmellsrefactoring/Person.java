@@ -4,7 +4,7 @@ public class Person
 {
     private final String firstName;
     private final String lastName;
-    private Address address;
+    private Address address = new Address(0, "", "");
     private int age = 0;
 
     public Person(String firstName, String lastName)
@@ -32,8 +32,8 @@ public class Person
     }
 
     @Override
-    public  String toString() { //Inconsistent spacing -- ah yes my favourite name of 'String'
-        var addressString = address.toString();
+    public String toString() {
+        String addressString = address.toString();
         if (addressString.equals("Address: 0 , ")) {
             addressString = "Address: <no address set>";
         }
