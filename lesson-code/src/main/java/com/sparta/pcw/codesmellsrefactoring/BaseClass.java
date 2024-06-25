@@ -1,13 +1,13 @@
 package com.sparta.pcw.codesmellsrefactoring;
 
-// Class to represent a Person
+// Class to represent a Person -- Then call it that
 public class BaseClass
 {
-    private final String fn;
-    private final String lastName;
+    private final String fn; //please make consistent names
+    private final String lastName; //Why are these finals but the others arent?
     private int age;
-    private String hobbies;
-    private int houseNo = 0;
+    private String hobbies; //If not used why declared?
+    private int houseNo = 0; //The address could be ... Address?
     private String street = "";
     private String town = "";
 
@@ -16,17 +16,18 @@ public class BaseClass
         this.fn = fName;
         this.lastName = lName;
     }
-
+    //
     public BaseClass(String fName, String lName, int hNo, String street, String town) {
-        this(fName, lName);
+        this(fName, lName); //What does this mean?
         this.houseNo = hNo;
         this.street = street;
         this.town = town;
+        //Add the hobbies constructor?
     }
 
     public int getAge() {
         return age;
-    }
+    } //Why are we setting and getting age but nothing else
 
     public void setAge(int age) {
         if (age >= 0) {
@@ -44,7 +45,7 @@ public class BaseClass
     }
 
     @Override
-    public  String toString() {
+    public  String toString() { //Inconsistent spacing -- ah yes my favourite name of 'String'
         var addressString = "Address: " + houseNo + " " + street + ", "  + town;
 
         if (addressString.equals("Address: 0 , ")) {

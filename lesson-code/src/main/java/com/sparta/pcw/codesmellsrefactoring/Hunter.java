@@ -11,7 +11,7 @@ public class Hunter extends BaseClass {
     public void setWeapon(Weapon weapon)
     {
         this.weapon = weapon;
-    }
+    } //If not used, why declared
 
     public String shootWeapon() {
         return String.format("Hunter %s shoots! %s", getFullName(), weapon.shoot());
