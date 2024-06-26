@@ -24,7 +24,7 @@ public class App {
 
         logger.setLevel(Level.OFF);         //Turns off the logger - stops any code from doing anything with it
         /*
-        You print at that level and higher
+        You print at that level and higher - What's in the level? we decide
         Class LogManager is a singleton
         Default handler level is INFO
         Severe - Highest Value
