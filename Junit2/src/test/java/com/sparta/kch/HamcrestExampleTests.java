@@ -2,10 +2,7 @@ package com.sparta.kch;
 
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.time.LocalDate;
 
@@ -17,7 +14,7 @@ public class HamcrestExampleTests {
 
     @BeforeEach
     void setUp() {
-        kat = new Spartan(1, "Kat", "Java", LocalDate.of(2024,6,10));
+        kat = new Spartan(100, "Kat", "Java", LocalDate.of(2024,6,10));
     }
     @Nested
     @DisplayName("Hamcrest Spartan Tests")
@@ -43,7 +40,7 @@ public class HamcrestExampleTests {
     class HamcrestStringMethods{
         @Test
         void checkThatNameIsNotEmptyOrNull() {
-            assertThat(kat.getName(), is(not(emptyOrNullString())));
+            assertThat(kat.getName(), not(emptyOrNullString()));
         }
 
         @Test
@@ -51,5 +48,28 @@ public class HamcrestExampleTests {
             assertThat(kat.getName(), endsWith("t"));
         }
     }
+    @Nested
+    @DisplayName("Kats Wacky Fun Times")
+
+    class KatsWackyTests{
+        @Test
+        void testIDIsBetween10And10000(){
+            assertThat(kat.getId(), is(greaterThan(10), lessThan(10000)));
+
+        }
+        @Test
+        void testCourseIsOneOfAcceptedAnswers(){
+            assertThat(kat.getCourse(), oneOf("Java", "C#", "Data", "DevOps", "Cyber-Security", "Business", "Test"));
+        }
+
+        @Test
+        @DisplayName("testIsStartDateInPast")
+        void testIsStartDateInPast() {
+            assertThat(kat.getStartDate(), lessThan(LocalDate.now()));
+        }
+
+    }
+
+
 
 }
