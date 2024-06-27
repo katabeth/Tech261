@@ -51,4 +51,5 @@ public class HamcrestExampleTests {
             assertThat(kat.getName(), endsWith("t"));
         }
     }
+
 }
