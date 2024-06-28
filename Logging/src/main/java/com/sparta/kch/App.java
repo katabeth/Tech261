@@ -2,16 +2,15 @@ package com.sparta.kch;
 
 //import java.util.logging.*;
 
-import com.sparta.kch.logging.CustomFormatter;
+import com.sparta.kch.logging.LoggerInitialiser;
 
-import static com.sparta.kch.logging.LoggerInitialiser.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class App {
-
+    final static Logger logger = LoggerInitialiser.getLogger(Level.FINE, Level.ALL, true);
 
     public static void main(String[] args) {
-        setUpLogFINEST();
-        setUpLogINFO();
         //  finestLogger.log(Level.INFO, "This is an info message");
         logger.info("This is also an info message");
         logger.warning("This is a warning message");

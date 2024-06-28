@@ -1,8 +1,11 @@
 package com.sparta.kch;
 
-import static com.sparta.kch.App.logger;
+
+import static com.sparta.kch.logger.LoggerInitialiser.*;
+
 
 public class Cat extends Animal{
+
     public Cat(String name, String breed, int age){
         super(name,breed,age);
     }
