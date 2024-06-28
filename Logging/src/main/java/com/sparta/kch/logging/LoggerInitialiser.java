@@ -13,7 +13,7 @@ public class LoggerInitialiser{
 
     public static Logger getLogger (Level fileLevel,Level consoleLevel, boolean append){
         setupConsoleHandler(consoleLevel);
-        //setupFileHandler(fileLevel,append);
+        setupFileHandler(fileLevel,append);
         logger.setUseParentHandlers(false);
         logger.setLevel(fileLevel);
         return logger;
@@ -30,7 +30,7 @@ public class LoggerInitialiser{
         try {
             FileHandler fileHandler = new FileHandler("src/main/resources/log-file.log",append); //log files should be in the gitignore
             fileHandler.setLevel(level);
-            fileHandler.setFormatter(new CustomFormatterTerminal());
+            fileHandler.setFormatter(new CustomFormatterFile());
             logger.addHandler(fileHandler);
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Failed to set up file handler");
