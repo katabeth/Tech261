@@ -15,15 +15,7 @@ public class App {
         logger.info("This is also an info message");
         logger.warning("This is a warning message");
         logger.fine("We're all fine here thank you");
-        logger.fine("We're all fine here thank you");
-        logger.fine("We're all fine here thank you");
-        logger.fine("We're all fine here thank you");
-        logger.fine("We're all fine here thank you");
-        logger.fine("We're all fine here thank you");
-        logger.fine("We're all fine here thank you");
-        logger.fine("We're all fine here thank you");
-        logger.fine("We're all fine here thank you");
-        logger.fine("We're all fine here thank you");
+
 
         //finestLogger.setLevel(Level.OFF);         //Turns off the finestLogger - stops any code from doing anything with it
         /*

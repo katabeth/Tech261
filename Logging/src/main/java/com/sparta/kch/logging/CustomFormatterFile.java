@@ -18,9 +18,9 @@ public class CustomFormatterFile extends Formatter {
         //TODO figure out how to reach end of array
         return LocalTime.now().format(myTimeFormat)
                 + " " + LocalDate.now().format(myDateFormat)
-                +" in application: " + record.getSourceClassName()
-                + "\n" + record.getLevel()
-                +" " + record.getMessage()
+                +" "+ record.getSourceClassName()
+                + "\t" + record.getLevel()
+                +"\t " + record.getMessage()
                 + "\n";
     }
 }

@@ -7,8 +7,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class LoggerInitialiser{
-
-    //public static final Logger logger = Logger.getLogger(App.class.getName());
+    // Use this in the class you want:
+    //final static Logger logger = LoggerInitialiser.getLogger(Level.FINE, Level.ALL, true);
     public static final Logger logger = Logger.getLogger(LoggerInitialiser.class.getName());
 
     public static Logger getLogger (Level fileLevel,Level consoleLevel, boolean append){
