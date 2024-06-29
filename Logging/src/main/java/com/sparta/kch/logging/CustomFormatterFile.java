@@ -14,8 +14,7 @@ public class CustomFormatterFile extends Formatter {
         DateTimeFormatter myTimeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
 
         //TODO set as string builder
-        //TODO fix with log files
-        //TODO figure out how to reach end of array
+
         return LocalTime.now().format(myTimeFormat)
                 + " " + LocalDate.now().format(myDateFormat)
                 +" "+ record.getSourceClassName()
