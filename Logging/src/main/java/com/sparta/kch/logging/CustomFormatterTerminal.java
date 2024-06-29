@@ -7,26 +7,28 @@ import java.util.logging.Formatter;
 import java.util.logging.LogRecord;
 
 public class CustomFormatterTerminal extends Formatter {
-    public static int index = 8;
+    private static final String[] colour = {"\u001B[38;2;255;30;38m ","\u001B[38;2;255;148;30m ","\u001B[38;2;255;255;0m "
+                                            ,"\u001B[38;2;6;189;0m ","\u001B[38;2;0;26;152m ","\u001B[38;2;118;0;136m "
+                                            ,"\u001B[38;2;0;0;0m ", "\u001B[38;2;96;56;20m "
+                                            ,"\u001B[38;2;117;213;235m ","\u001B[38;2;253;175;199m ","\u001B[38;2;255;255;255m "};
+    private static int index = colour.length-2;
     @Override
     public String format(LogRecord record) {
-        String[] colour = {"\u001B[31m ","\u001B[33m ","\u001B[32m "
-                ,"\u001B[34m ","\u001B[36m ","\u001B[35m ","\u001B[37m ", "\u001B[30m "};
         DateTimeFormatter myDateFormat = DateTimeFormatter.ofPattern("dd MMM");
         DateTimeFormatter myTimeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
-        index ++;
-        if (index >= (colour.length -2)){
-            index = -1;
+
+        index += 2;
+        if (index > colour.length + 2){
+            index -= colour.length;
         }
-        index ++;
 
         //TODO set as string builder
         //TODO fix with log files
         //TODO figure out how to reach end of array
-        return colour[index] + LocalTime.now().format(myTimeFormat)
+        return colour[index%colour.length] + LocalTime.now().format(myTimeFormat)
                 + " " + LocalDate.now().format(myDateFormat)
                 +" in application: " + record.getSourceClassName()
-                + "\n" + colour[index+1] + record.getLevel()
+                + "\n" + colour[(index+1)%colour.length] + record.getLevel()
                 +" " + record.getMessage()
                 + "\n";
     }
