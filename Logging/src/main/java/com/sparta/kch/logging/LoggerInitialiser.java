@@ -11,17 +11,21 @@ public class LoggerInitialiser{
     //final static Logger logger = LoggerInitialiser.getLogger(Level.FINE, Level.ALL, true);
     public static final Logger logger = Logger.getLogger(LoggerInitialiser.class.getName());
 
-    public static Logger getLogger (Level fileLevel,Level consoleLevel, boolean append){
-        setupConsoleHandler(consoleLevel);
+    public static Logger getLogger (Level fileLevel,Level consoleLevel, boolean append, boolean simple){
+        setupConsoleHandler(consoleLevel, simple);
         setupFileHandler(fileLevel,append);
         logger.setUseParentHandlers(false);
         logger.setLevel(fileLevel);
         return logger;
     }
-    public static void setupConsoleHandler(Level level) {
+    public static void setupConsoleHandler(Level level, boolean simple) {
 
         ConsoleHandler consoleHandler = new ConsoleHandler();
-        consoleHandler.setFormatter(new CustomFormatterTerminal());
+        if (simple){
+            consoleHandler.setFormatter(new CustomFormatterReadable());
+        } else {
+            consoleHandler.setFormatter(new CustomFormatterTerminal());
+        }
         consoleHandler.setLevel(level);
         logger.addHandler(consoleHandler);
 

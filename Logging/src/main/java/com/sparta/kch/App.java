@@ -8,7 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class App {
-    final static Logger logger = LoggerInitialiser.getLogger(Level.FINE, Level.ALL, false);
+    final static Logger logger = LoggerInitialiser.getLogger(Level.FINE, Level.ALL, false,false);
 
     public static void main(String[] args) {
         //  finestLogger.log(Level.INFO, "This is an info message");

@@ -23,8 +23,7 @@ public class CustomFormatterTerminal extends Formatter {
         }
 
         //TODO set as string builder
-        //TODO fix with log files
-        //TODO figure out how to reach end of array
+
         return colour[index%colour.length] + LocalTime.now().format(myTimeFormat)
                 + " " + LocalDate.now().format(myDateFormat)
                 +" in application: " + record.getSourceClassName()
