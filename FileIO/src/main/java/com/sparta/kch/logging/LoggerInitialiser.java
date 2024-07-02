@@ -15,7 +15,7 @@ public class LoggerInitialiser{
         setupConsoleHandler(consoleLevel);
         setupFileHandler(fileLevel,append);
         logger.setUseParentHandlers(false);
-        logger.setLevel(fileLevel);
+        logger.setLevel(Level.ALL);
         return logger;
     }
     public static void setupConsoleHandler(Level level) {

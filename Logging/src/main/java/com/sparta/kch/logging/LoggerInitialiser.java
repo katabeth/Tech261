@@ -8,20 +8,20 @@ import java.util.logging.Logger;
 
 public class LoggerInitialiser{
     // Use this in the class you want:
-    //final static Logger logger = LoggerInitialiser.getLogger(Level.FINE, Level.ALL, true);
+    //final static Logger logger = LoggerInitialiser.getLogger(Level.ALL, Level.FINE, false, false);
     public static final Logger logger = Logger.getLogger(LoggerInitialiser.class.getName());
 
-    public static Logger getLogger (Level fileLevel,Level consoleLevel, boolean append, boolean simple){
-        setupConsoleHandler(consoleLevel, simple);
+    public static Logger getLogger (Level consoleLevel,Level fileLevel, boolean append, boolean isSimple){
+        setupConsoleHandler(consoleLevel, isSimple);
         setupFileHandler(fileLevel,append);
         logger.setUseParentHandlers(false);
-        logger.setLevel(fileLevel);
+        logger.setLevel(Level.ALL);
         return logger;
     }
-    public static void setupConsoleHandler(Level level, boolean simple) {
+    public static void setupConsoleHandler(Level level, boolean isSimple) {
 
         ConsoleHandler consoleHandler = new ConsoleHandler();
-        if (simple){
+        if (isSimple){
             consoleHandler.setFormatter(new CustomFormatterReadable());
         } else {
             consoleHandler.setFormatter(new CustomFormatterTerminal());

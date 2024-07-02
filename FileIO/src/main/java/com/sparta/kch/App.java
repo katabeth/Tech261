@@ -10,25 +10,23 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class App {
-    final static Logger logger = LoggerInitialiser.getLogger(Level.FINE, Level.ALL, false);
+    final static Logger logger = LoggerInitialiser.getLogger(Level.OFF, Level.ALL, false);
     public static void main(String[] args) {
-        try {
-            BufferedReader bufferedReader =
-                    new BufferedReader(new FileReader
-                            ("src/main/resources/employees-corrupted(in).csv"));
-            // Avoid first line
-            // print rest of document
 
+        try (BufferedReader bufferedReader = new BufferedReader(
+                new FileReader(
+                        "src/main/resources/employees-corrupted(in).csv")))
+        {
             for (String line = bufferedReader.readLine(); line != null; line = bufferedReader.readLine()){
                 logger.info(line.replace(",", ",\t"));
+
             }
-
-
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            logger.warning(e.toString());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
 
     }
 }
