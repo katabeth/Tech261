@@ -8,7 +8,10 @@ import java.util.logging.Logger;
 
 public class LoggerInitialiser{
     // Use this in the class you want:
-    //final static Logger logger = LoggerInitialiser.getLogger(Level.ALL, Level.FINE, false, false);
+    // final static Logger logger = LoggerInitialiser.getLogger(Level.ALL, Level.FINE, false, false);
+    // Console Level, File Level, Append to file?, Use simple format?
+    // Simple format means it does not record the time and place of the error. The file always uses complex format
+
     public static final Logger logger = Logger.getLogger(LoggerInitialiser.class.getName());
 
     public static Logger getLogger (Level consoleLevel,Level fileLevel, boolean append, boolean isSimple){
