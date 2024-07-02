@@ -13,7 +13,7 @@ public class LoggerInitialiser{
 
     public static Logger getLogger (Level consoleLevel,Level fileLevel, boolean append, boolean isSimple){
         setupConsoleHandler(consoleLevel, isSimple);
-        setupFileHandler(fileLevel,append);
+        setupFileHandler(fileLevel,append,Thread.currentThread().getStackTrace()[2].getClassName());
         logger.setUseParentHandlers(false);
         logger.setLevel(Level.ALL);
         return logger;
@@ -30,9 +30,13 @@ public class LoggerInitialiser{
         logger.addHandler(consoleHandler);
 
     }
-    public static void setupFileHandler(Level level, boolean append){
+    public static void setupFileHandler(Level level, boolean append, String filepath){
         try {
-            FileHandler fileHandler = new FileHandler("src/main/resources/log-file.log",append); //log files should be in the gitignore
+
+            String[] name = filepath.split("\\.");
+            filepath = name[name.length -1];
+            // TODO trim name
+            FileHandler fileHandler = new FileHandler("src/main/resources/log-file-"+filepath+".log",append); //log files should be in the gitignore
             fileHandler.setLevel(level);
             fileHandler.setFormatter(new CustomFormatterFile());
             logger.addHandler(fileHandler);

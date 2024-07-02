@@ -8,7 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class App {
-    final static Logger logger = LoggerInitialiser.getLogger(Level.ALL, Level.FINE, false,false);
+    final static Logger logger = LoggerInitialiser.getLogger(Level.INFO, Level.FINE, false,false);
 
     public static void main(String[] args) {
         //  finestLogger.log(Level.INFO, "This is an info message");
@@ -22,7 +22,7 @@ public class App {
         logger.fine("We're all fine here thank you");
         logger.fine("We're all fine here thank you");
         logger.fine("We're all fine here thank you");
-
+        App2.testCase();
 
 
         //finestLogger.setLevel(Level.OFF);         //Turns off the finestLogger - stops any code from doing anything with it
