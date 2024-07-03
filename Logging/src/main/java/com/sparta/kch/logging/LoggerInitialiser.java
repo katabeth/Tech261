@@ -12,6 +12,10 @@ public class LoggerInitialiser{
     // Console Level, File Level, Append to file?, Use simple format?
     // Simple format means it does not record the time and place of the error. The file always uses complex format
 
+    // Logger changes level based on what class
+    // Handlers only ever respond one leve;
+    // UUID - standard file names random gen
+
     public static final Logger logger = Logger.getLogger(LoggerInitialiser.class.getName());
 
     static{
@@ -29,7 +33,7 @@ public class LoggerInitialiser{
     public static Logger getLogger (Level consoleLevel, boolean isSimple){
         setupConsoleHandler(consoleLevel, isSimple);
         logger.setUseParentHandlers(false);
-        logger.setLevel(Level.ALL);
+        logger.setLevel(consoleLevel);
         return logger;
     }
     public static void setupConsoleHandler(Level level, boolean isSimple) {
