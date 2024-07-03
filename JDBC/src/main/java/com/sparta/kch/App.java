@@ -1,23 +1,16 @@
 package com.sparta.kch;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import com.sparta.kch.logging.LoggerInitialiser;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class App {
     // Connection
     // Statements
     // Results
+    final static Logger logger = LoggerInitialiser.getLogger(Level.ALL, true);
     public static void main(String[] args){
-        try {
-
-            Connection connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306","root","root");
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-
+        ConnectToDatabase.queryDatabase();
     }
 }
