@@ -10,6 +10,7 @@ public class App {
     // Statements
     // Results
     final static Logger logger = LoggerInitialiser.getLogger(Level.ALL, true);
+
     public static void main(String[] args){
         ConnectToDatabase.queryDatabase();
     }
