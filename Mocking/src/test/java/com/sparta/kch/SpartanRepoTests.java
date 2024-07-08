@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.InOrder;
 import org.mockito.Mockito;
 
 import java.time.LocalDate;
@@ -67,5 +68,21 @@ public class SpartanRepoTests {
         Mockito.verify(mock1, Mockito.times(1)).getId();
         Mockito.verify(mock2, Mockito.times(1)).getId();
     }
-
+    @Test
+    @DisplayName("Testing getAllSpartans calls getID and getName")
+    public void testGetAllSpartansCallsGetIDAndGetName() {
+        sut.getAllSpartans();
+        InOrder inOrder = Mockito.inOrder(mock1);
+        inOrder.verify(mock1).getId();
+        inOrder.verify(mock1).getName();
+        inOrder.verifyNoMoreInteractions();
+    }
+    @Test
+    @DisplayName("Test correct parameter")
+    public void testCorrectParameter() {
+        Mockito.when(mock1.getId())
+                .thenReturn(3);
+        sut.changeName(3, "Kat");
+        Mockito.verify(mock1).setName("Kat");
+    }
 }
