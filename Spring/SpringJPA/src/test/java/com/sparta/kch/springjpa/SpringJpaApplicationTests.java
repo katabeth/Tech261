@@ -3,10 +3,10 @@ package com.sparta.kch.springjpa;
 import com.sparta.kch.springjpa.entities.AuthorEntity;
 import com.sparta.kch.springjpa.repositories.AuthorRepo;
 import com.sparta.kch.springjpa.repositories.BookRepo;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Bean;
 
 @SpringBootTest
 class SpringJpaApplicationTests {
@@ -64,6 +64,21 @@ class SpringJpaApplicationTests {
         Assertions.assertTrue(authorRepo.findByFullName("Kat").isEmpty());
     }
 
+    @Test
+    @DisplayName("Test I can search books by Author ID")
+    @Transactional
+    void testSearchByAuthorID() {
+        String test = bookRepo.findBookEntityByAuthor_Id(1).getFirst().getTitle();
+        Assertions.assertEquals(test, "The History of Me");
+    }
+
+    @Test
+    @DisplayName("Test search books by author name")
+    @Transactional
+    void testSearchByAuthorName() {
+        String test = bookRepo.findByAuthorName("Katherine").getFirst().getTitle();
+        Assertions.assertEquals(test, "The History of Me");
+    }
 
 
 
