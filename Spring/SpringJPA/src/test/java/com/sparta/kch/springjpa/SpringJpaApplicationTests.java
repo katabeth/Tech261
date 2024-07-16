@@ -1,20 +1,24 @@
 package com.sparta.kch.springjpa;
 
 import com.sparta.kch.springjpa.entities.AuthorEntity;
+import com.sparta.kch.springjpa.entities.BookEntity;
 import com.sparta.kch.springjpa.repositories.AuthorRepo;
 import com.sparta.kch.springjpa.repositories.BookRepo;
+import com.sparta.kch.springjpa.service.LibraryService;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.HashMap;
+
 @SpringBootTest
 class SpringJpaApplicationTests {
 
-    @Autowired
-    AuthorRepo authorRepo;
-    @Autowired
-    BookRepo bookRepo;
+        @Autowired
+        AuthorRepo authorRepo;
+        @Autowired
+        BookRepo bookRepo;
     // Create
     // Read
     // Update
@@ -80,6 +84,9 @@ class SpringJpaApplicationTests {
         Assertions.assertEquals(test, "The History of Me");
     }
 
-
+    @Test
+    void testServiceLayer(){
+        LibraryService.authorsWithOnly1Book();
+    }
 
 }
