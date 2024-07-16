@@ -59,4 +59,15 @@ public class AuthorController {
         // Return No Content
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Author> deleteAuthor(@PathVariable Integer id){
+        // Find the author
+        // If not found, return not found
+        if (!authorRepo.existsById(id)){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        authorRepo.deleteById(id);
+        // Return No Content
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }
