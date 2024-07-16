@@ -1,5 +1,6 @@
 package com.sparta.kch.springrest.controllers;
 
+import com.sparta.kch.springrest.entities.Author;
 import com.sparta.kch.springrest.entities.Book;
 import com.sparta.kch.springrest.exceptions.ResourceNotFoundException;
 import com.sparta.kch.springrest.repositories.AuthorRepository;
@@ -47,7 +48,30 @@ public class BookController {
         URI location = URI.create(request.getRequestURL().toString()+"/"+book.getId());
         return ResponseEntity.created(location).body(book);
     }
-    //@PutMapping
+    @PutMapping("/{id}")
+    public ResponseEntity<Book> updateBook(@PathVariable Integer id, @RequestBody Book book){
+        // Check two ids match
+        if (!id.equals(book.getId())){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        // check book exists
+        } else if (!bookRepo.existsById(id)){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        // Check provided book has an author
+        } else if (book.getAuthor() == null) {
+            throw new ResourceNotFoundException("No Author Provided");
+        // Check if the Author has an id and creates it if not
+        } else if (book.getAuthor().getId() == null) {
+            authorRepo.save(book.getAuthor());
+        // Check the provided Author id exists
+        } else if (!authorRepo.existsById((book.getAuthor().getId()))) {
+            throw new ResourceNotFoundException("Author with id "+book.getAuthor().getId()+" not found");
+        // Checks id vs name of author
+        } else if (!authorRepo.findById(book.getAuthor().getId()).orElseThrow().getFullName().equals(book.getAuthor().getFullName())) {
+            throw new ResourceNotFoundException("Author id doesnt match Name");
+        }
+        bookRepo.save(book);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
     @DeleteMapping("/{id}")
     public ResponseEntity<Book> deleteBook(@PathVariable Integer id){
         // Find the book
