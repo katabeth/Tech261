@@ -2,6 +2,7 @@ package com.sparta.kch.springrest.controllers;
 
 import com.sparta.kch.springrest.entities.Author;
 import com.sparta.kch.springrest.repositories.AuthorRepository;
+import com.sparta.kch.springrest.repositories.BookRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,18 +10,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 @RestController
 @RequestMapping("/api/authors")
 public class AuthorController {
 
     private final AuthorRepository authorRepo;
+    private final BookRepository bookRepo;
 
-    public AuthorController(@Autowired AuthorRepository authorRepository) {
+    public AuthorController(@Autowired AuthorRepository authorRepository, BookRepository bookRepository) {
         this.authorRepo = authorRepository;
+        this.bookRepo = bookRepository;
     }
 
     @GetMapping
@@ -38,7 +39,14 @@ public class AuthorController {
     }
     @PostMapping
     public ResponseEntity<Author> createAuthor(@RequestBody Author author, HttpServletRequest request){
+        if (authorRepo.existsById(author.getId())){
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
         authorRepo.save(author);
+        // Set id to be that stated in request - doesnt work
+//        bookRepo.findAll().stream()
+//                .filter(saveAuthor -> saveAuthor.getAuthor().getFullName().equals(author.getFullName()))
+//                .forEach(saveAuthor -> {saveAuthor.setId(author.getId());});
         URI location = URI.create(request.getRequestURL().toString() + "/" +author.getId());
         return ResponseEntity.created(location).body(author);
     }
@@ -65,6 +73,13 @@ public class AuthorController {
         // If not found, return not found
         if (!authorRepo.existsById(id)){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        // If author has books, return CONFLICT
+//        bookRepo.findAll().stream()
+//                .filter(book -> book.getAuthor().equals(authorRepo.findById(id).orElseThrow()))
+//                .forEach(bookRepo::delete);
+        if (bookRepo.findAll().stream().anyMatch(book -> book.getAuthor().equals(authorRepo.findById(id).orElseThrow()))){
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
         authorRepo.deleteById(id);
         // Return No Content
