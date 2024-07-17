@@ -4,6 +4,7 @@ import com.sparta.kch.springrest.entities.Author;
 import com.sparta.kch.springrest.repositories.AuthorRepository;
 import com.sparta.kch.springrest.repositories.BookRepository;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,15 +39,12 @@ public class AuthorController {
         return new ResponseEntity<>(author, HttpStatus.OK);
     }
     @PostMapping
-    public ResponseEntity<Author> createAuthor(@RequestBody Author author, HttpServletRequest request){
+    public ResponseEntity<Author> createAuthor(@RequestBody @Valid Author author, HttpServletRequest request){
         if (authorRepo.existsById(author.getId())){
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
         authorRepo.save(author);
-        // Set id to be that stated in request - doesnt work
-//        bookRepo.findAll().stream()
-//                .filter(saveAuthor -> saveAuthor.getAuthor().getFullName().equals(author.getFullName()))
-//                .forEach(saveAuthor -> {saveAuthor.setId(author.getId());});
+
         URI location = URI.create(request.getRequestURL().toString() + "/" +author.getId());
         return ResponseEntity.created(location).body(author);
     }
