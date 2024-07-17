@@ -6,12 +6,19 @@ import com.sparta.kch.springrest.repositories.BookRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 @RequestMapping("/api/authors")
@@ -83,4 +90,30 @@ public class AuthorController {
         // Return No Content
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @GetMapping("/hateoas/authors")
+    public CollectionModel<EntityModel<Author>> getAuthorsHateoas() {
+        List<EntityModel<Author>> authors = authorRepo.findAll()
+                .stream()
+                .map(
+                        author ->
+                        {
+                            List<Link> bookLinks =
+                                    author.getBooks()
+                                            .stream()
+                                            .map(
+                                                    book -> WebMvcLinkBuilder.linkTo(
+                                                            methodOn(BookController.class).getBookByID(book.getId())).withRel(book.getTitle()))
+                                            .collect( Collectors.toList());
+                            Link selfLink = WebMvcLinkBuilder.linkTo(
+                                    methodOn(AuthorController.class).getAuthorByID(author.getId())).withSelfRel();
+                            Link relLink = WebMvcLinkBuilder.linkTo(methodOn(AuthorController.class).getAuthors()).withRel("author");
+                            return EntityModel.of(author, selfLink, relLink).add(bookLinks);
+                        })
+                .collect(Collectors.toList());
+        return CollectionModel.of(
+                authors,
+                WebMvcLinkBuilder.linkTo(methodOn(AuthorController.class).getAuthorsHateoas()).withSelfRel());
+    }
+
 }
