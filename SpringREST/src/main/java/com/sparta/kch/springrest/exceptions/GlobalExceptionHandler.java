@@ -3,10 +3,14 @@ package com.sparta.kch.springrest.exceptions;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -22,8 +26,13 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseEntity<ErrorResponse> handleMethodArgumentNotValidException
             (MethodArgumentNotValidException ex, HttpServletRequest request) {
-        ErrorResponse errorResponse = new ErrorResponse("You messed up", "BAD_REQUEST",null);
+        Map<String, String> errors = new HashMap<>();
+        ex.getBindingResult().getAllErrors().forEach(
+                error -> errors.put(((FieldError)error).getField(), error.getDefaultMessage())
+        );
+
+        ErrorResponse errorResponse = new ErrorResponse(errors, "BAD_REQUEST",null);
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
-    private record ErrorResponse(String error, String message, String url) {}
+    private record ErrorResponse(Object errorDetails, String errorCode, String url) {}
 }
