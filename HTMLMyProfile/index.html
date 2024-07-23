@@ -7,18 +7,12 @@
     <meta name="description" content="This is amazing">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="profileStyle.css" rel="stylesheet">
-    <style>
-        li{
-            background-color: lightblue;
-            color: red;
-        }
-    </style>
     <title>Document</title>
 </head>
 <!-- to comment out is ctr+k+c -->
 
-<body>
-    <nav>
+<body class = "container">
+    <nav class = "flex-container">
         <a href="index.html">Go to profile</a>
         <a href="projects.html">Go to projects</a>
         <a href="https://www.linkedin.com/in/katherine-carver-hardy-31b81816b/" target="_blank">My LinkedIn</a>
@@ -30,12 +24,12 @@
         <img alt = "My picture" src = "images/profilepic.jpg" width = "200px">
     </header>
     <!-- Division tab -->
-    <section>
+    <section class = "box-1">
         <h4>My Skills</h4>
         <p>Agile, Scrum and similar methodologies</p>
         <p>Baking</p>
     </section>
-    <section>
+    <section class = "box-1">
         <h4>My Hobbies</h4>
         <ul>
             <li>Dungeons and Dragons</li>
@@ -43,7 +37,7 @@
             <li>Final Fantasy XIV</li>
         </ul>
     </section>
-    <section>
+    <section class = "box-2">
         <h4> My Goals</h4>
         <ol>
             <li>Financial Freedom</li>
@@ -54,7 +48,7 @@
     </section>
     <section>
         <h3>Search for news</h3>
-        <form action = "https://www.bbc.co.uk/search">
+        <form id = "myForm" action = "https://www.bbc.co.uk/search">
             <label for = "mysearch">Search for:</label>
             <!-- q is for query -->
             <input id = "mysearch" name = "q" type = "text" value = "Colchester">
