@@ -7,6 +7,12 @@
     <meta name="description" content="This is amazing">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="profileStyle.css" rel="stylesheet">
+    <style>
+        li{
+            background-color: lightblue;
+            color: red;
+        }
+    </style>
     <title>Document</title>
 </head>
 <!-- to comment out is ctr+k+c -->
@@ -25,6 +31,11 @@
     </header>
     <!-- Division tab -->
     <section>
+        <h4>My Skills</h4>
+        <p>Agile, Scrum and similar methodologies</p>
+        <p>Baking</p>
+    </section>
+    <section>
         <h4>My Hobbies</h4>
         <ul>
             <li>Dungeons and Dragons</li>
@@ -41,7 +52,16 @@
             <li>Have a loving family</li>
         </ol>
     </section>
-    <h3>Search for news</h3>
+    <section>
+        <h3>Search for news</h3>
+        <form action = "https://www.bbc.co.uk/search">
+            <label for = "mysearch">Search for:</label>
+            <!-- q is for query -->
+            <input id = "mysearch" name = "q" type = "text" value = "Colchester">
+            <input class = "button" type = "submit" value = "Submit">
+        </form>
+    </section>
+    
     <!-- <p>An <em>awesome</em> and <strong>amazing</strong> web demo</p> -->
     <footer>
         <small>Copyright &#169; Sparta Global 2024 <cite>By Katherine Carver-Hardy</cite></small>
