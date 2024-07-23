@@ -16,12 +16,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
-@RequestMapping("/api/authors")
+@RequestMapping("/api")
 public class AuthorController {
 
     private final AuthorRepository authorRepo;
@@ -32,18 +33,30 @@ public class AuthorController {
         this.bookRepo = bookRepository;
     }
 
-    @GetMapping
+    @GetMapping("/authors")
     public List<Author> getAuthors(){
         return authorRepo.findAll();
     }
-    @GetMapping("/{id}")
-    public ResponseEntity<Author> getAuthorByID(@PathVariable Integer id){
-        Author author = authorRepo.findById(id).orElse(null);
-        if (author == null){
+    @GetMapping("hateoas/authors/{id}")
+    public ResponseEntity<EntityModel<Author>> getAuthorByIDHateoas(@PathVariable Integer id){
+        Optional<Author> author = authorRepo.findById(id);
+        if (author.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-
         }
-        return new ResponseEntity<>(author, HttpStatus.OK);
+        List<Link> bookLinks = author.get().getBooks().stream()
+                .map(book -> WebMvcLinkBuilder.linkTo(
+                        methodOn(BookController.class).getBookByID(book.getId()))
+                        .withRel(book.getTitle()))
+                .toList();
+        Link selfLink = WebMvcLinkBuilder.linkTo(
+                methodOn(AuthorController.class).getAuthorByIDHateoas(author.get().getId())).withSelfRel();
+        Link relLink = WebMvcLinkBuilder.linkTo(
+                methodOn(AuthorController.class).getAuthors()).withRel("authors");
+
+        return new ResponseEntity<>(EntityModel.of(author.get(), selfLink, relLink).add(bookLinks), HttpStatus.OK);
+
+
+
     }
     @PostMapping
     public ResponseEntity<Author> createAuthor(@RequestBody @Valid Author author, HttpServletRequest request){
@@ -55,7 +68,7 @@ public class AuthorController {
         URI location = URI.create(request.getRequestURL().toString() + "/" +author.getId());
         return ResponseEntity.created(location).body(author);
     }
-    @PutMapping("/{id}")
+    @PutMapping("/authors/{id}")
     public ResponseEntity<Author> updateAuthor(@PathVariable Integer id, @RequestBody Author author){
         // Check if id is the same as the id of the json we're putting in the body
         // If not, return bad request
@@ -72,7 +85,7 @@ public class AuthorController {
         // Return No Content
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/authors/{id}")
     public ResponseEntity<Author> deleteAuthor(@PathVariable Integer id){
         // Find the author
         // If not found, return not found
@@ -95,25 +108,21 @@ public class AuthorController {
     public CollectionModel<EntityModel<Author>> getAuthorsHateoas() {
         List<EntityModel<Author>> authors = authorRepo.findAll()
                 .stream()
-                .map(
-                        author ->
-                        {
-                            List<Link> bookLinks =
-                                    author.getBooks()
-                                            .stream()
-                                            .map(
-                                                    book -> WebMvcLinkBuilder.linkTo(
-                                                            methodOn(BookController.class).getBookByID(book.getId())).withRel(book.getTitle()))
-                                            .collect( Collectors.toList());
-                            Link selfLink = WebMvcLinkBuilder.linkTo(
-                                    methodOn(AuthorController.class).getAuthorByID(author.getId())).withSelfRel();
-                            Link relLink = WebMvcLinkBuilder.linkTo(methodOn(AuthorController.class).getAuthors()).withRel("author");
-                            return EntityModel.of(author, selfLink, relLink).add(bookLinks);
+                .map(author -> {List<Link> bookLinks =
+                        author.getBooks().stream()
+                                .map(book -> WebMvcLinkBuilder.linkTo(
+                                        methodOn(BookController.class).getBookByID(book.getId())).withRel(book.getTitle()))
+                                .collect( Collectors.toList());
+                    Link selfLink = WebMvcLinkBuilder.linkTo(
+                            methodOn(AuthorController.class)
+                                    .getAuthorByIDHateoas(author.getId())).withSelfRel();
+                    Link relLink = WebMvcLinkBuilder.linkTo(
+                            methodOn(AuthorController.class)
+                                    .getAuthors()).withRel("author");
+                    return EntityModel.of(author, selfLink, relLink).add(bookLinks);
                         })
                 .collect(Collectors.toList());
-        return CollectionModel.of(
-                authors,
-                WebMvcLinkBuilder.linkTo(methodOn(AuthorController.class).getAuthorsHateoas()).withSelfRel());
+        return CollectionModel.of(authors, WebMvcLinkBuilder.linkTo(methodOn(AuthorController.class).getAuthorsHateoas()).withSelfRel());
     }
 
 }
