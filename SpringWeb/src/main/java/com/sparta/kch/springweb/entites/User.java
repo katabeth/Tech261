@@ -1,8 +1,5 @@
 package com.sparta.kch.springweb.entites;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "users", schema = "library")
@@ -10,6 +7,7 @@ public class User {
     @Id
     @GeneratedValue
     private Long id;
+    @Column(unique=true)
     private String userName;
     private String password;
     private String roles;

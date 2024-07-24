@@ -19,8 +19,14 @@ public class SpringWebApplication {
     CommandLineRunner runner (UserRepository userRepository, PasswordEncoder passwordEncoder){
 
         return args -> {
-            userRepository.save(new User("admin", passwordEncoder.encode("password"),"ROLE_ADMIN"));
-            userRepository.save(new User("user", passwordEncoder.encode("password"),"ROLE_USER"));
+            if (userRepository.findByUserName("admin").isEmpty()) {
+                userRepository.save(new User("admin", passwordEncoder.encode("password"),"ROLE_ADMIN"));
+            }
+
+            if (userRepository.findByUserName("user").isEmpty()) {
+                userRepository.save(new User("user", passwordEncoder.encode("password"),"ROLE_USER"));
+            }
+
         };
     }
 }
