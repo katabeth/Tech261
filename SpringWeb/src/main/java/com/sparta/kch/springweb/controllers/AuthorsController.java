@@ -2,12 +2,11 @@ package com.sparta.kch.springweb.controllers;
 
 import com.sparta.kch.springweb.entites.Author;
 import com.sparta.kch.springweb.repositories.AuthorRepository;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/authors")
@@ -31,8 +30,12 @@ public class AuthorsController {
         return "authors/create";
     }
     @PostMapping("/create")
-    public String createAuthor(Author author) {
-        authorRepository.save(author);
-        return "redirect:/authors";
+    public String createAuthor(@Valid @ModelAttribute("author") Author author, Errors errors) {
+        if (errors.hasErrors()) {
+            return "authors/create";
+        } else {
+            authorRepository.save(author);
+            return "redirect:/authors";
+        }
     }
 }
