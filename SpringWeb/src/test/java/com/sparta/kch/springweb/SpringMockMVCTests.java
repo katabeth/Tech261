@@ -38,4 +38,22 @@ public class SpringMockMVCTests {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("Welcome")));
     }
+
+    @Test
+    public void testWelcomeContainsAttributeDate() throws Exception{
+        mockMvc.perform(MockMvcRequestBuilders.get("/"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.model().attribute("date", Matchers.notNullValue()));
+    }
+    @Test
+    public void testWelcomePageContainsHeaderCharset() throws Exception{
+        mockMvc.perform(MockMvcRequestBuilders.get("/"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.header().string("Content-Type","text/html;charset=UTF-8"));
+    }
+    @Test
+    void testAuthorsPage() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/authors"))
+                .andDo(MockMvcResultHandlers.print());
+    }
 }
